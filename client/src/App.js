@@ -1,28 +1,25 @@
 import './App.css';
-import {createBrowserRouter,RouterProvider,Route,Link,Router,Switch} from 'react-router-dom';
+import {Route,Link,Router, Routes, BrowserRouter} from 'react-router-dom';
+import Navbar from './componenets/Navbar';
+import Signin from './pages/Auth/Signin';
+import Signup from './pages/Auth/Signup';
+import Products from './pages/Products';
 
 function App() {
   return (
-      <Router>
+      <BrowserRouter>
         <div>
-          <nav>
-            <ul>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-            </ul>
-          </nav>
-
-          <Switch>
-            <Route path="/" component={Home}></Route>
-          </Switch>
+        <Navbar/>
+        <div id="content">
+          <Routes>
+            <Route path="/" exact element={<Products />} />
+            <Route path="/signin" element={<Signin />} />
+            <Route path="/signup" element={<Signup />} />
+          </Routes>
+          </div>
         </div>
-      </Router>
+      </BrowserRouter>
     );
-}
-
-function Home(){
-  return <h2>About</h2>;
 }
 
 export default App;
